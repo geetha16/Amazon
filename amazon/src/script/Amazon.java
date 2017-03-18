@@ -1,6 +1,7 @@
 package script;
 
 import java.util.ArrayList;
+
 import generic.BaseTest;
 
 import org.testng.annotations.Test;
@@ -12,14 +13,14 @@ import pom.cartPage;
 
 public class Amazon extends BaseTest
 {
-	SearchPage sp=new SearchPage();
+	
 	@Test
-	public void testAmazon()
+	public void testAmazon() throws InterruptedException
 	{
-		SearchPage sp=new SearchPage();
-		SearchResultPage sr= new SearchResultPage();
-		PDPPage p=new PDPPage();
-		cartPage c=new cartPage();
+		SearchPage sp=new SearchPage(driver);
+		SearchResultPage sr= new SearchResultPage(driver);
+		PDPPage p=new PDPPage(driver);
+		cartPage c=new cartPage(driver);
 		
 		sp.enterSearchKeyword();
 		sp.clickOnSearchIcon();
@@ -34,9 +35,10 @@ public class Amazon extends BaseTest
        		
 		 driver.switchTo().window(tabs.get(2));
 		 p.addToCart();
+		 Thread.sleep(5000);
 		 
 		 p.navigateToCart();
-		 
+		 Thread.sleep(5000);
 		 c.deleteCartItem();
 	}
 

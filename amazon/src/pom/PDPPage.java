@@ -1,12 +1,23 @@
 package pom;
 
+import generic.BasePage;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
-public class PDPPage 
+public class PDPPage extends BasePage
 {
+	public PDPPage(WebDriver driver) {
+		super(driver);
+		this.driver = driver;
+		PageFactory.initElements(driver, this);
+		// TODO Auto-generated constructor stub
+	}
+
 	public WebDriver driver;
+	
 	@FindBy(xpath="//select[@id='native_dropdown_selected_size_name']")
 	private WebElement sizeDrpDwn;
 	
@@ -16,7 +27,7 @@ public class PDPPage
 	@FindBy(id="add-to-cart-button")
 	private WebElement addToCartBtn;
 	
-	@FindBy(id="hlb-view-cart-announce")
+	@FindBy(id="nav-cart-count")
 	private WebElement cartBtn;
 	
 	public void clickOnSizeDrpDwn()

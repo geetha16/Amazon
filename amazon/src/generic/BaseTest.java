@@ -7,7 +7,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
-public class BaseTest 
+public abstract class BaseTest 
 {
 	public WebDriver driver;
 	@BeforeMethod
@@ -16,8 +16,9 @@ public class BaseTest
 		System.setProperty("webdriver.chrome.driver","./driver/chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
-		driver.get("http://www.amazon.in");
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		driver.get("http://www.amazon.in");
+		
 	}
 	
 	@AfterMethod
